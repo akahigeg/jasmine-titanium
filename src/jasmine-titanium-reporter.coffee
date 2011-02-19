@@ -70,7 +70,7 @@ class TitaniumReporter
         @flushLog(suite) if !suite.parentSuite
 
     log: (str, logLevel)->
-        return if str.match(/Jasmine waiting for something to happen/)
+        return if !logLevel || str.match(/Jasmine waiting for something to happen/)
 
         message = "Jasmine: " + Array(@indent + 1).join("  ") + str
 
