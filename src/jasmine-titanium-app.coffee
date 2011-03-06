@@ -33,5 +33,3 @@ SpecHelper = {
 
 jasmine.getEnv().addReporter(new jasmine.TitaniumReporter(verbose))
 jasmine.getEnv().execute()
-
-alert('spec runner finished')

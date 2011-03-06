@@ -29,11 +29,11 @@ Getting Started
 
 * Mac OSX
 * iOS SDK
-* Titanium Mobile 1.5.1
+* Titanium Mobile 1.6.0
 
 Android環境でもspecs.shをちょっといじればいけるかもしれません。
 
-Titanium MobileのSDKのバージョンがspecs.shにベタ書きのため、1.5.1でしか動きません。  
+Titanium MobileのSDKのバージョンがspecs.shにベタ書きのため、1.6.0でしか動きません。  
 逆に言うとspecs.shを書き換えればどのバージョンでも動きます（たぶん）
 
 Tips

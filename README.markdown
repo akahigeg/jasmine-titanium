@@ -29,11 +29,11 @@ Requirements
 
 * Mac OSX
 * iOS SDK
-* Titanium Mobile 1.5.1
+* Titanium Mobile 1.6.0
 
 I have not try to run with Android.
 
-Titanium Mobile SDK version "1.5.1" is hard coded in specs.sh.  
+Titanium Mobile SDK version "1.6.0" is hard coded in specs.sh.  
 Replace it to run other version. that's maybe works.
 
 Tips
