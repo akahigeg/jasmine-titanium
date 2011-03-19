@@ -29,11 +29,11 @@ Requirements
 
 * Mac OSX
 * iOS SDK
-* Titanium Mobile 1.6.0
+* Titanium Mobile 1.6.1
 
 I have not try to run with Android.
 
-Titanium Mobile SDK version "1.6.0" is hard coded in specs.sh.  
+Titanium Mobile SDK version "1.6.1" is hard coded in specs.sh.
 Replace it to run other version. that's maybe works.
 
 Tips
@@ -47,8 +47,8 @@ Tips
 
 ### make symbolic link for specs.sh in Resource dir
 
-	# in Resources/
-    ln -s vendor/jasmin-titanium/script/specs.sh specs.sh 
+  # in Resources/
+    ln -s vendor/jasmin-titanium/script/specs.sh specs.sh
     ./specs.sh
 
 save typing.

@@ -29,11 +29,11 @@ Getting Started
 
 * Mac OSX
 * iOS SDK
-* Titanium Mobile 1.6.0
+* Titanium Mobile 1.6.1
 
 Android環境でもspecs.shをちょっといじればいけるかもしれません。
 
-Titanium MobileのSDKのバージョンがspecs.shにベタ書きのため、1.6.0でしか動きません。  
+Titanium MobileのSDKのバージョンがspecs.shにベタ書きのため、1.6.1でしか動きません。
 逆に言うとspecs.shを書き換えればどのバージョンでも動きます（たぶん）
 
 Tips
@@ -47,8 +47,8 @@ Tips
 
 ### specs.shのシンボリックリンクをResource以下に張る
 
-	# in Resources/
-    ln -s vendor/jasmin-titanium/script/specs.sh specs.sh 
+  # in Resources/
+    ln -s vendor/jasmin-titanium/script/specs.sh specs.sh
     ./specs.sh
 
 実行がちょっと楽になります。
