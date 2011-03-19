@@ -20,10 +20,10 @@ do
     if [ "${name}" = "Resources" ]
     then
         break
-    fi 
+    fi
 done
 
-# Run specs 
+# Run specs
 cd $RESOURCE_DIR
 
 cat > temp_runner_options.js << EOF
@@ -33,7 +33,7 @@ EOF
 cp app.js app.js.backup
 cp vendor/jasmine-titanium/lib/jasmine-titanium-app.js app.js
 
-/Library/Application\ Support/Titanium/mobilesdk/osx/1.6.0/iphone/builder.py run `pwd`/..
+/Library/Application\ Support/Titanium/mobilesdk/osx/1.6.1/iphone/builder.py run `pwd`/..
 
 cp app.js.backup app.js
 rm app.js.backup temp_runner_options.js
