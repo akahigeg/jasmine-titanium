@@ -22,7 +22,7 @@ Getting Started
 
 ### スペックを実行する
 
-    jasmin-titanium/script/specs.sh
+    jasmine-titanium/script/specs.sh
 
 動作環境
 --------
@@ -43,12 +43,12 @@ Tips
 
     -v            実行の際にスペックの詳細を表示する
     -s CLASSNAME  指定したクラス名のスペックのみを実行する
-                  ex. -c bookmark #=> bookmark_spec.js
+                  ex. -s bookmark #=> bookmark_spec.js
 
 ### specs.shのシンボリックリンクをResource以下に張る
 
   # in Resources/
-    ln -s vendor/jasmin-titanium/script/specs.sh specs.sh
+    ln -s vendor/jasmine-titanium/script/specs.sh specs.sh
     ./specs.sh
 
 実行がちょっと楽になります。
@@ -59,7 +59,7 @@ Tips
 
 ### コードをlibやspec以外に置きたい場合
 
-vendor/jasmin-titanium/config/runner-config.jsを変更してしてください。
+vendor/jasmine-titanium/config/runner-config.jsを変更してしてください。
 
 ### インクルードパス問題の解決
 

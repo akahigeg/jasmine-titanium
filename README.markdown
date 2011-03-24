@@ -22,7 +22,7 @@ See [Jasmine Wiki](http://pivotal.github.com/jasmine/) for more details.
 
 ### Run specs
 
-    jasmin-titanium/script/specs.sh
+    jasmine-titanium/script/specs.sh
 
 Requirements
 ------------
@@ -43,12 +43,12 @@ Tips
 
     -v            show list of spec descriptions.
     -s CLASSNAME  run specs for specified class only.
-                  ex. -c bookmark #=> bookmark_spec.js
+                  ex. -s bookmark #=> bookmark_spec.js
 
 ### make symbolic link for specs.sh in Resource dir
 
   # in Resources/
-    ln -s vendor/jasmin-titanium/script/specs.sh specs.sh
+    ln -s vendor/jasmine-titanium/script/specs.sh specs.sh
     ./specs.sh
 
 save typing.
@@ -59,7 +59,7 @@ save typing.
 
 ### change lib and spec dir
 
-Edit vendor/jasmin-titanium/config/runner-config.js
+Edit vendor/jasmine-titanium/config/runner-config.js
 
 ### include path dirty hack
 
