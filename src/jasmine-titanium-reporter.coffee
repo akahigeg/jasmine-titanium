@@ -77,13 +77,13 @@ class TitaniumReporter
         message = " " + message if logLevel.match(/warn|info/)
         @current.logs.push({level:logLevel, message:message}) if @verbose || logLevel != "debug"
 
-    flushLog: (suite)-> 
-        if suite 
+    flushLog: (suite)->
+        if suite
             if @verbose || @current.logs.some((e)-> e.level == "error")
                 Ti.API.debug("Jasmine: ")
                 Ti.API.debug("Jasmine: " + suite.description + "===========================================")
 
-            Ti.API.info(" Jasmine: " + @current.indicator) 
+            Ti.API.info(" Jasmine: " + @current.indicator)
             @current.indicator = ""
 
         Ti.API[log.level](log.message) for log in @current.logs

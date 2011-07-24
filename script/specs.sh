@@ -33,7 +33,13 @@ EOF
 cp app.js app.js.backup
 cp vendor/jasmine-titanium/lib/jasmine-titanium-app.js app.js
 
-/Library/Application\ Support/Titanium/mobilesdk/osx/1.6.1/iphone/builder.py run `pwd`/..
+~/Library/Application\ Support/Titanium/mobilesdk/osx/1.7.2/iphone/builder.py run `pwd`/..
+
+# tried run with Android, but failed.
+# ~/Library/Application\ Support/Titanium/mobilesdk/osx/1.7.2/android/builder.py run `pwd`/.. /opt/local/android-sdk
 
 cp app.js.backup app.js
 rm app.js.backup temp_runner_options.js
+
+# /usr/bin/killall "iPhone Simulator"
+

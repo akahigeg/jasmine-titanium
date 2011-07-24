@@ -29,11 +29,11 @@ Getting Started
 
 * Mac OSX
 * iOS SDK
-* Titanium Mobile 1.6.1
+* Titanium Mobile 1.7.2
 
 Android環境でもspecs.shをちょっといじればいけるかもしれません。
 
-Titanium MobileのSDKのバージョンがspecs.shにベタ書きのため、1.6.1でしか動きません。
+Titanium MobileのSDKのバージョンがspecs.shにベタ書きのため、1.7.2でしか動きません。
 逆に言うとspecs.shを書き換えればどのバージョンでも動きます（たぶん）
 
 Tips
@@ -47,7 +47,7 @@ Tips
 
 ### specs.shのシンボリックリンクをResource以下に張る
 
-  # in Resources/
+    # in Resources/
     ln -s vendor/jasmine-titanium/script/specs.sh specs.sh
     ./specs.sh
 
@@ -60,9 +60,3 @@ Tips
 ### コードをlibやspec以外に置きたい場合
 
 vendor/jasmine-titanium/config/runner-config.jsを変更してしてください。
-
-### インクルードパス問題の解決
-
-    Ti.include("../../../../../../../../../lib/bookmark.js")
-
-参考:[TitaniumのインクルードパスをResourcesからの相対パスで指定する方法](http://higelog.brassworks.jp/?p=1130)
