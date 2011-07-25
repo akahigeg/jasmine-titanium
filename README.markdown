@@ -22,40 +22,38 @@ See [Jasmine Wiki](http://pivotal.github.com/jasmine/) for more details.
 
 ### Run specs
 
-    jasmine-titanium/script/specs.sh
+    jasmine-titanium/script/specs.py
 
 Requirements
 ------------
 
 * Mac OSX
 * iOS SDK
-* Titanium Mobile 1.7.2
+* Titanium Mobile 1.7.2 or later
 
-I have not try to run with Android.
-
-Titanium Mobile SDK version "1.7.2" is hard coded in specs.sh.
-Replace it to run other version. that's maybe works.
+Not working for Android.
 
 Tips
 ----
 
-### specs.sh options
+### specs.py options
 
     -v            show list of spec descriptions.
     -s CLASSNAME  run specs for specified class only.
                   ex. -s bookmark #=> bookmark_spec.js
+    -o FILE       Write output to a file instead of STDOUT.
 
-### make symbolic link for specs.sh in Resource dir
+### make symbolic link for specs.py in Resource dir
 
     # in Resources/
-    ln -s vendor/jasmine-titanium/script/specs.sh specs.sh
-    ./specs.sh
+    ln -s vendor/jasmine-titanium/script/specs.py specs.py
+    ./specs.py
 
 save typing.
 
 ### filtering noisy log
 
-    ./specs.sh |grep Jasmine:
+    ./specs.py |grep Jasmine:
 
 ### change lib and spec dir
 
