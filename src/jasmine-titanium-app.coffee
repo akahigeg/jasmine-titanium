@@ -12,9 +12,11 @@ JasmineTitaniumApp = {
 
     loadSpecs: (path)->
         dir = Ti.Filesystem.getFile("#{@spec_dir}#{path}")
-        for spec in dir.getDirectoryListing()
-            continue if @classname != "" && spec != @classname + "_spec.js"
+        files = dir.getDirectoryListing()
+
+        for spec in files
             if spec.match(/_spec.js$/)
+                continue if @classname != "" && spec != @classname + "_spec.js"
                 Ti.include(@lib_dir + path + spec.replace("_spec.js", ".js"))
                 Ti.include(@spec_dir + path + spec)
             else
