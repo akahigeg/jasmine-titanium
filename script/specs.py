@@ -124,13 +124,13 @@ def main(argv):
         setup_jasmine_titanium_app_webview_js()
 
     if options.platform == 'android':
-        run_android_emulator() # 非同期
+        run_android_emulator() # async
         # TODO: 
-        # タイマーではなく標準出力に以下の文字列が出てくるまで待つようにする
-        # [INFO] Installing application on device
+        # replace time.sleep to stdout progress watching by following message
+        # = [INFO] Installing application on device
         time.sleep(10.0)
     else:
-        run_iphone_simulator() # こちらは同期
+        run_iphone_simulator() # sync
 
     restore_app_js()
     remove_temporary()

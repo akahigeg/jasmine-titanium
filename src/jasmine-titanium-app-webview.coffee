@@ -1,6 +1,3 @@
-# TODO: 結果のリンク切れをなんとかする
-# TODO: Androidで表示する際のスタイル調整
-
 Ti.include("/vendor/jasmine-titanium/lib/jasmine-titanium-app.js")
 
 script_tags = []
