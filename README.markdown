@@ -12,6 +12,11 @@ Getting Started
     mkdir spec lib vendor
     cd vendor
     git clone https://github.com/akahigeg/jasmine-titanium.git
+    cd jasmine-titanium
+    git submodule init
+    git submodule update
+
+Using jasmine 1.0.1-release.
 
 ### Writing code
 

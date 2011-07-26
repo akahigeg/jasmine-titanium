@@ -12,6 +12,11 @@ Getting Started
     mkdir spec lib vendor
     cd vendor
     git clone https://github.com/akahigeg/jasmine-titanium.git
+    cd jasmine-titanium
+    git submodule init
+    git submodule update
+
+利用しているJamineのバージョンは1.0.1-releaseです。
 
 ### コードを書く
 
