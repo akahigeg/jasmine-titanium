@@ -32,8 +32,8 @@ def app_js_path():
 def app_js_backup_path():
     return app_js_path() + ".backup"
 
-def jasmine_titanium_app_js_path():
-    return os.path.join(resource_dir(), 'vendor', 'jasmine-titanium', 'lib', 'jasmine-titanium-app.js')
+def jasmine_titanium_app_console_js_path():
+    return os.path.join(resource_dir(), 'vendor', 'jasmine-titanium', 'lib', 'jasmine-titanium-app-console.js')
 
 def jasmine_titanium_app_webview_js_path():
     return os.path.join(resource_dir(), 'vendor', 'jasmine-titanium', 'lib', 'jasmine-titanium-app-webview.js')
@@ -49,9 +49,9 @@ def save_options_to_temporary(options, args):
 def remove_temporary():
     os.remove(options_temporary_path())
 
-def setup_jasmine_titanium_app_js():
+def setup_jasmine_titanium_app_console_js():
     shutil.copyfile(app_js_path(), app_js_backup_path())
-    shutil.copyfile(jasmine_titanium_app_js_path(), app_js_path())
+    shutil.copyfile(jasmine_titanium_app_console_js_path(), app_js_path())
 
 def setup_jasmine_titanium_app_webview_js():
     shutil.copyfile(app_js_path(), app_js_backup_path())
@@ -119,7 +119,7 @@ def main(argv):
         os.dup2(log, sys.stdout.fileno())
 
     if options.reporter == 'console' and options.platform != 'android':
-        setup_jasmine_titanium_app_js()
+        setup_jasmine_titanium_app_console_js()
     else:
         setup_jasmine_titanium_app_webview_js()
 

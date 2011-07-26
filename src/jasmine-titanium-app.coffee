@@ -1,7 +1,5 @@
 Ti.App.env = 'test'
 
-Ti.include("/vendor/jasmine-titanium/jasmine/lib/jasmine.js")
-Ti.include("/vendor/jasmine-titanium/lib/jasmine-titanium-reporter.js")
 Ti.include("/vendor/jasmine-titanium/config/runner-config.js")
 Ti.include("/temp_runner_options.js")
 
@@ -27,9 +25,3 @@ JasmineTitaniumApp = {
                 @loadSpecs(spec + "/")
 }
 JasmineTitaniumApp.loadSpecs("")
-
-Ti.include(lib) for lib in JasmineTitaniumApp.libs
-Ti.include(spec) for spec in JasmineTitaniumApp.specs
-
-jasmine.getEnv().addReporter(new jasmine.TitaniumReporter(JasmineTitaniumApp.verbose))
-jasmine.getEnv().execute()

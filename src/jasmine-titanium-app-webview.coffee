@@ -1,57 +1,17 @@
-# TODO: テンプレート化
-# TODO: テストを動的に読み込む
 # TODO: 結果のリンク切れをなんとかする
+# TODO: Androidで表示する際のスタイル調整
 
-#  <script src='spec/a_spec.js'></script>
+Ti.include("/vendor/jasmine-titanium/lib/jasmine-titanium-app.js")
+
+script_tags = []
+for libs_specs in [JasmineTitaniumApp.libs, JasmineTitaniumApp.specs]
+    for js in libs_specs
+        script_tags.push("<script type='text/javascript' src='#{js}'></script>")
+
 wv = Ti.UI.createWebView()
-wv.html = "
-
-<html>
-<head>
-  <title>Jasmine Spec Runner</title>
-
-  <link rel='stylesheet' type='text/css' href='vendor/jasmine-titanium/jasmine/lib/jasmine.css'>
-  <script type='text/javascript' src='vendor/jasmine-titanium/jasmine/lib/jasmine.js'></script>
-  <script type='text/javascript' src='vendor/jasmine-titanium/jasmine/lib/jasmine-html.js'></script>
-  <script src='lib/a.js'></script>
-  <script src='spec/hoge_spec.js'></script>
-  <script type='text/javascript'>
-    (function() {
-      var jasmineEnv = jasmine.getEnv();
-      jasmineEnv.updateInterval = 1000;
-
-      var trivialReporter = new jasmine.TrivialReporter();
-
-      jasmineEnv.addReporter(trivialReporter);
-
-      jasmineEnv.specFilter = function(spec) {
-        return trivialReporter.specFilter(spec);
-      };
-
-      var currentWindowOnload = window.onload;
-
-      window.onload = function() {
-        if (currentWindowOnload) {
-          currentWindowOnload();
-        }
-        execJasmine();
-      };
-
-      function execJasmine() {
-        jasmineEnv.execute();
-      }
-
-    })();
-  </script>
-</head>
-
-<body>
-</body>
-</html>
-
-    "
+template = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, '/vendor/jasmine-titanium/lib/spec_runner.html')
+wv.html = template.read().text.replace(/%%libs_and_specs_tags%%/, script_tags.join("\n"))
 
 window = Ti.UI.createWindow()
 window.add(wv)
 window.open()
-
