@@ -1,4 +1,5 @@
 Ti.App.env = 'test'
+
 Ti.include("/vendor/jasmine-titanium/jasmine/lib/jasmine.js")
 Ti.include("/vendor/jasmine-titanium/lib/jasmine-titanium-reporter.js")
 Ti.include("/vendor/jasmine-titanium/config/runner-config.js")
@@ -10,6 +11,9 @@ JasmineTitaniumApp = {
     lib_dir: runner_config.lib_dir + "/"
     spec_dir: runner_config.spec_dir + "/"
 
+    libs: []
+    specs: []
+
     loadSpecs: (path)->
         dir = Ti.Filesystem.getFile("#{@spec_dir}#{path}")
         files = dir.getDirectoryListing()
@@ -17,12 +21,15 @@ JasmineTitaniumApp = {
         for spec in files
             if spec.match(/_spec.js$/)
                 continue if @classname != "" && spec != @classname + "_spec.js"
-                Ti.include(@lib_dir + path + spec.replace("_spec.js", ".js"))
-                Ti.include(@spec_dir + path + spec)
+                @libs.push(@lib_dir + path + spec.replace("_spec.js", ".js"))
+                @specs.push(@spec_dir + path + spec)
             else
                 @loadSpecs(spec + "/")
 }
 JasmineTitaniumApp.loadSpecs("")
+
+Ti.include(lib) for lib in JasmineTitaniumApp.libs
+Ti.include(spec) for spec in JasmineTitaniumApp.specs
 
 jasmine.getEnv().addReporter(new jasmine.TitaniumReporter(JasmineTitaniumApp.verbose))
 jasmine.getEnv().execute()

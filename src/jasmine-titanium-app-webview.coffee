@@ -1,3 +1,8 @@
+# TODO: テンプレート化
+# TODO: テストを動的に読み込む
+# TODO: 結果のリンク切れをなんとかする
+
+#  <script src='spec/a_spec.js'></script>
 wv = Ti.UI.createWebView()
 wv.html = "
 
@@ -9,7 +14,6 @@ wv.html = "
   <script type='text/javascript' src='vendor/jasmine-titanium/jasmine/lib/jasmine.js'></script>
   <script type='text/javascript' src='vendor/jasmine-titanium/jasmine/lib/jasmine-html.js'></script>
   <script src='lib/a.js'></script>
-  <script src='spec/a_spec.js'></script>
   <script src='spec/hoge_spec.js'></script>
   <script type='text/javascript'>
     (function() {
