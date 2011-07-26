@@ -74,10 +74,13 @@ def create_option_parser():
             help="write output to a file instead of STDOUT.", default="", metavar="FILE")
 
     parser.add_option("-p", "--platform", dest="platform", 
-            help="android or iphone.", default="iphone", metavar="PLATFORM")
+            help="android or iphone. [default: iphone]", default="iphone", metavar="PLATFORM")
+
+    parser.add_option("--android-sdk", dest="android_sdk_path", 
+            help="specify android sdk path. ", default="", metavar="ANDROID_SDK_PATH")
 
     parser.add_option("-r", "--reporter", dest="reporter", 
-            help="display result to html or console. (html only for android)", default="html", metavar="REPORTER")
+            help="display result to html or console. (html only for android) [defulat: html]", default="html", metavar="REPORTER")
 
     return parser
 
@@ -96,7 +99,11 @@ def run_iphone_simulator():
     command = command_path + " run " + project_dir()
     os.system(command)
 
-def run_android_emulator():
+def run_android_emulator(android_sdk_path):
+    if android_sdk_path == '':
+        print "Please specify Android SDK Path."
+        return False
+
     system_command_path = "/Library/Application\ Support/Titanium/mobilesdk/osx/" + sdk_version() + "/android/builder.py"
 
     if os.path.exists(system_command_path):
@@ -105,7 +112,7 @@ def run_android_emulator():
         user_command_path = "~" + system_command_path
         command_path = user_command_path
 
-    command = command_path + " run " + project_dir() + " /opt/local/android-sdk"
+    command = command_path + " run " + project_dir() + " " + android_sdk_path
     os.system(command)
 
 def main(argv):
@@ -124,7 +131,7 @@ def main(argv):
         setup_jasmine_titanium_app_webview_js()
 
     if options.platform == 'android':
-        run_android_emulator() # async
+        run_android_emulator(options.android_sdk_path) # async
         # TODO: 
         # replace time.sleep to stdout progress watching by following message
         # = [INFO] Installing application on device

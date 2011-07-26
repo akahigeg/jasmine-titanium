@@ -34,9 +34,8 @@ Getting Started
 
 * Mac OSX
 * iOS SDK
+* Android SDK (experimental)
 * Titanium Mobile 1.7.2 or later
-
-Androidでは動作しません。
 
 Tips
 ----
@@ -47,6 +46,12 @@ Tips
     -s CLASSNAME  指定したクラス名のスペックのみを実行する
                   ex. -s bookmark #=> bookmark_spec.js
     -o FILE       出力を標準出力の代わりにファイルに保存する
+    -p PLATFORM, --platform=PLATFORM
+                  android または iphone. [default: iphone]
+    --android-sdk=ANDROID_SDK_PATH
+                  Android SDKのパスを指定
+    -r REPORTER, --reporter=REPORTER
+                  結果の出力を画面上にするかコンソールにするか (androidは画面上のみ) [defulat: html]
 
 ### specs.pyのシンボリックリンクをResource以下に張る
 

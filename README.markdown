@@ -34,9 +34,8 @@ Requirements
 
 * Mac OSX
 * iOS SDK
+* Android SDK (experimental)
 * Titanium Mobile 1.7.2 or later
-
-Not working for Android.
 
 Tips
 ----
@@ -47,6 +46,12 @@ Tips
     -s CLASSNAME  run specs for specified class only.
                   ex. -s bookmark #=> bookmark_spec.js
     -o FILE       Write output to a file instead of STDOUT.
+    -p PLATFORM, --platform=PLATFORM
+                  android or iphone. [default: iphone]
+    --android-sdk=ANDROID_SDK_PATH
+                  specify android sdk path.                 
+    -r REPORTER, --reporter=REPORTER
+                  display result to html or console. (html only for android) [defulat: html]
 
 ### make symbolic link for specs.py in Resource dir
 
