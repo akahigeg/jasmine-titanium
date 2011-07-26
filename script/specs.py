@@ -69,7 +69,14 @@ def create_option_parser():
     return parser
 
 def run_iphone_simulator():
-    command = "~/Library/Application\ Support/Titanium/mobilesdk/osx/" + sdk_version() + "/iphone/builder.py run " + project_dir()
+    system_command_path = "/Library/Application\ Support/Titanium/mobilesdk/osx/" + sdk_version() + "/iphone/builder.py"
+    if os.path.exists(system_command_path):
+        command_path = system_command_path
+    else:
+        user_command_path = "~" + system_command_path
+        command_path = user_command_path
+
+    command = command_path + " run " + project_dir()
     os.system(command)
 
 def main(argv):
