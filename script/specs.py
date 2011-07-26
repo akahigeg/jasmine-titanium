@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os, sys, re, shutil
+import os, sys, re, shutil, time
 from optparse import OptionParser
 
 def project_dir():
@@ -35,6 +35,9 @@ def app_js_backup_path():
 def jasmine_titanium_app_js_path():
     return os.path.join(resource_dir(), 'vendor', 'jasmine-titanium', 'lib', 'jasmine-titanium-app.js')
 
+def jasmine_titanium_app_webview_js_path():
+    return os.path.join(resource_dir(), 'vendor', 'jasmine-titanium', 'lib', 'jasmine-titanium-app-webview.js')
+
 def save_options_to_temporary(options, args):
     class_name = options.class_name
     verbose = options.is_verbose
@@ -50,6 +53,10 @@ def setup_jasmine_titanium_app_js():
     shutil.copyfile(app_js_path(), app_js_backup_path())
     shutil.copyfile(jasmine_titanium_app_js_path(), app_js_path())
 
+def setup_jasmine_titanium_app_webview_js():
+    shutil.copyfile(app_js_path(), app_js_backup_path())
+    shutil.copyfile(jasmine_titanium_app_webview_js_path(), app_js_path())
+
 def restore_app_js():
     shutil.copyfile(app_js_backup_path(), app_js_path())
     os.remove(app_js_backup_path())
@@ -64,9 +71,19 @@ def create_option_parser():
             help="specify class name", default="", metavar="CLASS_NAME")
 
     parser.add_option("-o", "--out", dest="output", 
-            help="Write output to a file instead of STDOUT.", default="", metavar="FILE")
+            help="write output to a file instead of STDOUT.", default="", metavar="FILE")
+
+    parser.add_option("-p", "--platform", dest="platform", 
+            help="android or iphone.", default="iphone", metavar="PLATFORM")
+
+    parser.add_option("-r", "--reporter", dest="reporter", 
+            help="display result to html or console. (html only for android)", default="html", metavar="REPORTER")
 
     return parser
+
+def run(platform):
+    return False
+    # not implemented
 
 def run_iphone_simulator():
     system_command_path = "/Library/Application\ Support/Titanium/mobilesdk/osx/" + sdk_version() + "/iphone/builder.py"
@@ -79,18 +96,41 @@ def run_iphone_simulator():
     command = command_path + " run " + project_dir()
     os.system(command)
 
+def run_android_emulator():
+    system_command_path = "/Library/Application\ Support/Titanium/mobilesdk/osx/" + sdk_version() + "/android/builder.py"
+
+    if os.path.exists(system_command_path):
+        command_path = system_command_path
+    else:
+        user_command_path = "~" + system_command_path
+        command_path = user_command_path
+
+    command = command_path + " run " + project_dir() + " /opt/local/android-sdk"
+    os.system(command)
+
 def main(argv):
     parser = create_option_parser()
     (options, args) = parser.parse_args(argv)
 
     save_options_to_temporary(options, args)
-    setup_jasmine_titanium_app_js()
 
     if options.output:
         log = os.open(options.output, os.O_WRONLY|os.O_CREAT)
         os.dup2(log, sys.stdout.fileno())
 
-    run_iphone_simulator()
+    if options.reporter == 'console' and options.platform != 'android':
+        setup_jasmine_titanium_app_js()
+    else:
+        setup_jasmine_titanium_app_webview_js()
+
+    if options.platform == 'android':
+        run_android_emulator() # 非同期
+        # TODO: 
+        # タイマーではなく標準出力に以下の文字列が出てくるまで待つようにする
+        # [INFO] Installing application on device
+        time.sleep(10.0)
+    else:
+        run_iphone_simulator() # こちらは同期
 
     restore_app_js()
     remove_temporary()
