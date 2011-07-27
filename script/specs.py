@@ -74,13 +74,13 @@ def create_option_parser():
             help="write output to a file instead of STDOUT.", default="", metavar="FILE")
 
     parser.add_option("-p", "--platform", dest="platform", 
-            help="android or iphone. [default: iphone]", default="iphone", metavar="PLATFORM")
+            help="android or iphone. android is experimantal [default: iphone]", default="iphone", metavar="PLATFORM")
 
     parser.add_option("--android-sdk", dest="android_sdk_path", 
             help="specify android sdk path. ", default="", metavar="ANDROID_SDK_PATH")
 
     parser.add_option("-r", "--reporter", dest="reporter", 
-            help="display result to html or console. (html only for android) [defulat: html]", default="html", metavar="REPORTER")
+            help="display result to html or console. html is experimantal(html only for android) [defulat: console]", default="console", metavar="REPORTER")
 
     return parser
 
@@ -119,6 +119,7 @@ def run_android_emulator(android_sdk_path):
 
 def main(argv):
     parser = create_option_parser()
+    # TODO: read default option by .specs
     (options, args) = parser.parse_args(argv)
 
     save_options_to_temporary(options, args)

@@ -51,7 +51,7 @@ Tips
     --android-sdk=ANDROID_SDK_PATH
                   specify android sdk path.                 
     -r REPORTER, --reporter=REPORTER
-                  display result to html or console. (html only for android) [defulat: html]
+                  display result to html or console. (html only for android) [defulat: console]
 
 ### make symbolic link for specs.py in Resource dir
 

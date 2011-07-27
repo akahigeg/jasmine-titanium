@@ -51,7 +51,7 @@ Tips
     --android-sdk=ANDROID_SDK_PATH
                   Android SDKのパスを指定
     -r REPORTER, --reporter=REPORTER
-                  結果の出力を画面上のHTMLにするかコンソールにするか (androidはHTMLのみ) [defulat: html]
+                  結果の出力を画面上のHTMLにするかコンソールにするか (androidはHTMLのみ) [defulat: console]
 
 ### specs.pyのシンボリックリンクをResource以下に張る
 
