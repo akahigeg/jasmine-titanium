@@ -67,4 +67,4 @@ Tips
 
 ### コードをlibやspec以外に置きたい場合
 
-vendor/jasmine-titanium/config/runner-config.jsを変更してしてください。
+vendor/jasmine-titanium/config/runner-config.jsを変更してください。

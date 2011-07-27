@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os, sys, re, shutil, time
+import os, sys, re, shutil, time, subprocess
 from optparse import OptionParser
 
 def project_dir():
@@ -113,7 +113,9 @@ def run_android_emulator(android_sdk_path):
         command_path = user_command_path
 
     command = command_path + " run " + project_dir() + " " + android_sdk_path
-    os.system(command)
+    print "Installing..."
+    output = subprocess.check_output(command, shell=True)
+    print output
 
 def main(argv):
     parser = create_option_parser()
@@ -131,13 +133,9 @@ def main(argv):
         setup_jasmine_titanium_app_webview_js()
 
     if options.platform == 'android':
-        run_android_emulator(options.android_sdk_path) # async
-        # TODO: 
-        # replace time.sleep to stdout progress watching by following message
-        # = [INFO] Installing application on device
-        time.sleep(10.0)
+        run_android_emulator(options.android_sdk_path)
     else:
-        run_iphone_simulator() # sync
+        run_iphone_simulator()
 
     restore_app_js()
     remove_temporary()
