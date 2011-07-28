@@ -15,6 +15,7 @@ JasmineTitaniumApp = {
     loadSpecs: (path)->
         dir = Ti.Filesystem.getFile("#{@spec_dir}#{path}")
         files = dir.getDirectoryListing()
+        return if !files
 
         for spec in files
             if spec.match(/_spec.js$/)
@@ -22,6 +23,6 @@ JasmineTitaniumApp = {
                 @libs.push(@lib_dir + path + spec.replace("_spec.js", ".js"))
                 @specs.push(@spec_dir + path + spec)
             else
-                @loadSpecs(spec + "/")
+                @loadSpecs(path + spec + "/") #if !spec.match(/^\..+/)
 }
 JasmineTitaniumApp.loadSpecs("")
