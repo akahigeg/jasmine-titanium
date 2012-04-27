@@ -89,14 +89,15 @@ def run(platform):
     # not implemented
 
 def run_iphone_simulator():
-    system_command_path = "/Library/Application\ Support/Titanium/mobilesdk/osx/" + sdk_version() + "/iphone/builder.py"
+    system_command_path = "/Library/Application Support/Titanium/mobilesdk/osx/" + sdk_version() + "/iphone/builder.py"
+    
     if os.path.exists(system_command_path):
         command_path = system_command_path
     else:
         user_command_path = "~" + system_command_path
         command_path = user_command_path
 
-    command = command_path + " run " + project_dir()
+    command = command_path.replace(" ", "\ ") + " run " + project_dir()
     os.system(command)
 
 def run_android_emulator(android_sdk_path):
@@ -104,7 +105,7 @@ def run_android_emulator(android_sdk_path):
         print "Please specify Android SDK Path."
         return False
 
-    system_command_path = "/Library/Application\ Support/Titanium/mobilesdk/osx/" + sdk_version() + "/android/builder.py"
+    system_command_path = "/Library/Application Support/Titanium/mobilesdk/osx/" + sdk_version() + "/android/builder.py"
 
     if os.path.exists(system_command_path):
         command_path = system_command_path
@@ -112,7 +113,7 @@ def run_android_emulator(android_sdk_path):
         user_command_path = "~" + system_command_path
         command_path = user_command_path
 
-    command = command_path + " run " + project_dir() + " " + android_sdk_path
+    command = command_path.replace(" ", "\ ") + " run " + project_dir() + " " + android_sdk_path
     print "Installing..."
     output = subprocess.check_output(command, shell=True)
     print output
