@@ -1,4 +1,4 @@
-Jamine Titanium
+Jasmine Titanium
 ===============
 
 This brings JavaScript BDD framework [Pivotal Lab's Jasmine](http://github.com/pivotal/jasmine) to Titamium Mobile.
