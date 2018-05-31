@@ -1,7 +1,7 @@
 Jamine Titanium
 ===============
 
-This brings JavaScript BDD framework [Pivotal Lab's Jasmine](http://github.com/pivotal/jasmine) to Titamium Mobile.
+This brings JavaScript BDD framework [Pivotal Lab's Jasmine](https://github.com/jasmine/jasmine) to Titamium Mobile.
 
 Getting Started
 ---------------
@@ -23,7 +23,7 @@ Using jasmine 1.0.1-release.
 * Writing specs in spec dir.
 * Writing application code in lib dir.
 
-See [Jasmine Wiki](http://pivotal.github.com/jasmine/) for more details.
+See [Jasmine Wiki](https://jasmine.github.io/) for more details.
 
 ### Run specs
 
