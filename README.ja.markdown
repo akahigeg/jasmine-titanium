@@ -1,7 +1,7 @@
 Jamine Titanium
 ===============
 
-JavaScriptのBDDフレームワークである[Pivotal Lab's Jasmine](http://github.com/pivotal/jasmine)をTitanium Mobile上で動作させるためのものです。
+JavaScriptのBDDフレームワークである[Pivotal Lab's Jasmine](https://github.com/jasmine/jasmine)をTitanium Mobile上で動作させるためのものです。
 
 Getting Started
 ---------------
@@ -23,7 +23,7 @@ Getting Started
 * spec以下にスペックを作成する
 * lib以下に実コードを作成する
 
-詳しくは[Jasmineのサイト](http://pivotal.github.com/jasmine/)を参照。
+詳しくは[Jasmineのサイト](https://jasmine.github.io/)を参照。
 
 ### スペックを実行する
 
